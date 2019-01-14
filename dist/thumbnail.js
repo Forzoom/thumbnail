@@ -43,7 +43,7 @@
     var installed = false;
     var options = null;
     function install(Vue, _options) {
-        if (installed || !options) {
+        if (installed || !_options) {
             return;
         }
         installed = true;

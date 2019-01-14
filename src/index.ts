@@ -1,11 +1,12 @@
 import _Vue, { VNodeDirective } from 'vue';
 import { loadImage } from './utils';
+import { ThumbnailPluginOptions } from '../types';
 
 let installed: boolean = false;
 let options: ThumbnailPluginOptions | null = null;
 
 function install(Vue: typeof _Vue, _options: ThumbnailPluginOptions) {
-    if (installed || !options) {
+    if (installed || !_options) {
         return;
     }
     installed = true;
