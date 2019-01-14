@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "lib": [
+            "scripthost",
+            "dom",
+            "es2015",
+        ],
+    },
+    "include": [
+        "src/**/*.ts",
+        "types/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
