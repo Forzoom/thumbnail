@@ -70,7 +70,7 @@ function fn(el, binding) {
         setSrc(el, src, bindType);
     }
     else {
-        el.classList.add('image-blur1');
+        el.classList.add(options.enterClass);
         var thumbnailSrc = options.doTransform([originSrc], __assign({}, dataset, { width: thumbnailWidth }))[0];
         setSrc(el, thumbnailSrc, bindType);
         // 缩略图已经加载完成
@@ -78,11 +78,11 @@ function fn(el, binding) {
             var src = options.doTransform([originSrc], dataset)[0];
             loadImage(src).then(function () {
                 setSrc(el, src, bindType);
-                el.classList.add('image-blur2');
+                el.classList.add(options.leaveCass);
                 function removeClass() {
                     // tip: 少部分设备不支持multiple parameters，所以这里分开remove，基本保证最大兼容性
-                    el.classList.remove('image-blur1');
-                    el.classList.remove('image-blur2');
+                    el.classList.remove(options.enterClass);
+                    el.classList.remove(options.leaveCass);
                 }
                 // 为了保证只在这个el上添加一次transitionend
                 el.ontransitionend = removeClass;

@@ -10,7 +10,27 @@ const doTransform = function(images, dataset) {
 
 Vue.use(Thumbnail, {
     doTransform,
+    enterClass: 'add-blur',
+    leaveClass: 'transition-blur',
 });
+```
+
+```css
+.add-blur {
+    transition: 0.3s filter, 0.3s -webkit-filter;
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+// 图片模糊第二层
+.transition-blur {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+```
+
+使用data-thumbnail-width将触发thumbnail的逻辑，将使用data-thumbnail-width的值替换data-width的值
+```html
+<img src="example.jpg" data-thumbnail-width="100" />
 ```
 
 ## requirement

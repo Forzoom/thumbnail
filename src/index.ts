@@ -41,7 +41,7 @@ function fn(el: HTMLElement, binding: VNodeDirective) {
         const [ src ] = options!.doTransform([ originSrc ], dataset);
         setSrc(el, src, bindType);
     } else {
-        el.classList.add('image-blur1');
+        el.classList.add(options!.enterClass);
         const [ thumbnailSrc ] = options!.doTransform([ originSrc ], {
             ...dataset,
             width: thumbnailWidth,
@@ -54,12 +54,12 @@ function fn(el: HTMLElement, binding: VNodeDirective) {
 
             loadImage(src).then(() => {
                 setSrc(el, src, bindType);
-                el.classList.add('image-blur2');
+                el.classList.add(options!.leaveCass);
 
                 function removeClass() {
                     // tip: 少部分设备不支持multiple parameters，所以这里分开remove，基本保证最大兼容性
-                    el.classList.remove('image-blur1');
-                    el.classList.remove('image-blur2');
+                    el.classList.remove(options!.enterClass);
+                    el.classList.remove(options!.leaveCass);
                 }
 
                 // 为了保证只在这个el上添加一次transitionend
