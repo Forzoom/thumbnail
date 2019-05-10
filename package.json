@@ -12,8 +12,21 @@
   "license": "MIT",
   "devDependencies": {
     "rollup": "^1.1.0",
-    "rollup-plugin-typescript": "^1.0.0",
     "vue": "^2.5.22"
   },
-  "types": "types/index.d.ts"
+  "types": "types/index.d.ts",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "ts-loader": "^6.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.5"
+  },
+  "peerDependencies": {
+    "core-js": "2.x"
+  }
 }

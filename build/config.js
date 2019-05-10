@@ -1,4 +1,8 @@
-const typescript = require('rollup-plugin-typescript');
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
+const babel = require('rollup-plugin-babel');
+
+const extensions = [ '.ts', '.js' ];
 
 module.exports = exports = [
     {
@@ -8,7 +12,14 @@ module.exports = exports = [
             format: 'esm',
         },
         plugins: [
-            typescript(),
+            resolve({
+                extensions,
+            }),
+            commonjs(),
+            babel({
+                exclude: 'node_modules/**',
+                extensions,
+            }),
         ],
     },
     {
@@ -18,7 +29,14 @@ module.exports = exports = [
             format: 'cjs',
         },
         plugins: [
-            typescript(),
+            resolve({
+                extensions,
+            }),
+            commonjs(),
+            babel({
+                exclude: 'node_modules/**',
+                extensions,
+            }),
         ],
     },
     {
@@ -29,7 +47,14 @@ module.exports = exports = [
             format: 'umd',
         },
         plugins: [
-            typescript(),
+            resolve({
+                extensions,
+            }),
+            commonjs(),
+            babel({
+                exclude: 'node_modules/**',
+                extensions,
+            }),
         ],
     },
 ];

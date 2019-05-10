@@ -6,7 +6,7 @@ interface ThumbnailPluginOptions {
     /** 进入时添加的类型 */
     enterClass: string;
     /** 离开时添加的类型 */
-    leaveCass: string;
+    leaveClass: string;
 }
 
 export declare const install: (Vue: typeof _Vue, options: ThumbnailPluginOptions) => void;

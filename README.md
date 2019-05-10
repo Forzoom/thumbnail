@@ -28,11 +28,11 @@ Vue.use(Thumbnail, {
 }
 ```
 
-使用data-thumbnail-width将触发thumbnail的逻辑，将使用data-thumbnail-width的值替换data-width的值
+使用data-thumbnail-width将触发thumbnail的逻辑，将使用__data-thumbnail-width__的值替换__data-width__的值
 ```html
 <img src="example.jpg" data-thumbnail-width="100" />
 ```
 
 ## requirement
 
-1. Promise polyfill
+1. 依赖于core-js@2
