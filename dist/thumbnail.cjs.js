@@ -149,12 +149,12 @@ function fn(el, binding) {
 
       loadImage(src).then(function () {
         setSrc(el, src, bindType);
-        el.classList.add(options.leaveCass);
+        el.classList.add(options.leaveClass);
 
         function removeClass() {
           // tip: 少部分设备不支持multiple parameters，所以这里分开remove，基本保证最大兼容性
           el.classList.remove(options.enterClass);
-          el.classList.remove(options.leaveCass);
+          el.classList.remove(options.leaveClass);
         } // 为了保证只在这个el上添加一次transitionend
 
 
