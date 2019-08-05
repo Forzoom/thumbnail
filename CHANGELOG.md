@@ -6,3 +6,8 @@
 
 1. options添加enterClass和leaveClass
 2. 构建流程使用babel来处理ts，完善依赖逻辑
+
+### 0.0.4
+
+1. 添加**generateImageFilter**和**doTransform导出**，添加相应的类型信息
+2. 添加dist/thumbnail.min.js

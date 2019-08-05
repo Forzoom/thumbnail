@@ -28,7 +28,7 @@ Vue.use(Thumbnail, {
 }
 ```
 
-使用data-thumbnail-width将触发thumbnail的逻辑，将使用__data-thumbnail-width__的值替换__data-width__的值
+使用data-thumbnail-width将触发thumbnail的逻辑，将使用**data-thumbnail-width**的值替换**data-width**的值
 ```html
 <img src="example.jpg" data-thumbnail-width="100" />
 ```

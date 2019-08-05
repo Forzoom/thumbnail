@@ -1,6 +1,6 @@
 {
   "name": "@forzoom/thumbnail",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/thumbnail.cjs.js",
   "module": "dist/thumbnail.esm.js",
@@ -17,9 +17,12 @@
     "rollup": "^1.13.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-uglify": "^6.0.2",
     "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.1",
+    "vue": "^2.5.22"
   },
   "types": "types/index.d.ts",
   "peerDependencies": {
