@@ -36,3 +36,7 @@ Vue.use(Thumbnail, {
 ## requirement
 
 1. 依赖于core-js@2
+
+## Roadmap
+
+1. doTransform不需要由ThumbnailPluginOptions.doTransform提供
