@@ -1,10 +1,10 @@
 import _Vue, { PluginObject } from 'vue';
 
 interface ThumbnailPluginOptions {
-    /** 图片变换函数 */
-    doTransform: (images: string[], dataset: any, imageFilter: ImageFilter) => string[];
     /** 图片处理函数 */
     imageFilter: ImageFilter;
+    /** 图片变换函数 */
+    doTransform?: (images: string[], dataset: any, imageFilter: ImageFilter) => string[];
     /** 进入时添加的类型 */
     enterClass?: string;
     /** 离开时添加的类型 */
