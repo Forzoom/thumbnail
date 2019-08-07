@@ -1342,28 +1342,29 @@ function fn(el, binding) {
   var originSrc = binding.value;
   var bindType = binding.arg;
   var thumbnailWidth = dataset.thumbnailWidth;
+  var dt = options.doTransform || doTransform;
 
   if (!thumbnailWidth || isNaN(Number(thumbnailWidth))) {
-    var _doTransform = options.doTransform([originSrc], dataset, options.imageFilter),
-        _doTransform2 = _slicedToArray(_doTransform, 1),
-        src = _doTransform2[0];
+    var _dt = dt([originSrc], dataset, options.imageFilter),
+        _dt2 = _slicedToArray(_dt, 1),
+        src = _dt2[0];
 
     setSrc(el, src, bindType);
   } else {
     el.classList.add(options.enterClass || '');
 
-    var _doTransform3 = options.doTransform([originSrc], _objectSpread({}, dataset, {
+    var _dt3 = dt([originSrc], _objectSpread({}, dataset, {
       width: thumbnailWidth
     }), options.imageFilter),
-        _doTransform4 = _slicedToArray(_doTransform3, 1),
-        thumbnailSrc = _doTransform4[0];
+        _dt4 = _slicedToArray(_dt3, 1),
+        thumbnailSrc = _dt4[0];
 
     setSrc(el, thumbnailSrc, bindType); // 缩略图已经加载完成
 
     loadImage(thumbnailSrc).then(function () {
-      var _doTransform5 = options.doTransform([originSrc], dataset, options.imageFilter),
-          _doTransform6 = _slicedToArray(_doTransform5, 1),
-          src = _doTransform6[0];
+      var _dt5 = dt([originSrc], dataset, options.imageFilter),
+          _dt6 = _slicedToArray(_dt5, 1),
+          src = _dt6[0];
 
       loadImage(src).then(function () {
         setSrc(el, src, bindType);
@@ -1523,9 +1524,7 @@ function generateImageFilter(generateOptions) {
      * 添加七牛处理
      */
     qiniu: function qiniu(listener, options) {
-      var isQiniu = /qnssl.com/;
-
-      if (isQiniu.test(listener.src)) {
+      if (generateOptions.isQiniu && generateOptions.isQiniu(listener, options)) {
         var data = listener.ro;
         var keys = Object.keys(data);
 
@@ -1605,9 +1604,7 @@ function generateImageFilter(generateOptions) {
      * 处理微信头像图片
      */
     wx: function wx(listener, options) {
-      var isWX = /wx.qlogo.cn/;
-
-      if (isWX.test(listener.src)) {
+      if (generateOptions.isWeChat && generateOptions.isWeChat(listener, options)) {
         var data = listener.ro;
         var keys = Object.keys(data);
 

@@ -39,6 +39,8 @@ interface GenerateImageFilterOptions {
         [key: string]: string,
     };
     isAliyun?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;
+    isQiniu?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;
+    isWeChat?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;
 }
 
 export declare const install: (Vue: typeof _Vue, options: ThumbnailPluginOptions) => void;

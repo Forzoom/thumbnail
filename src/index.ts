@@ -46,13 +46,14 @@ function fn(el: HTMLElement, binding: VNodeDirective) {
     const originSrc = binding.value;
     const bindType = binding.arg;
     const thumbnailWidth = dataset.thumbnailWidth;
+    const dt = options!.doTransform || doTransform;
 
     if (!thumbnailWidth || isNaN(Number(thumbnailWidth))) {
-        const [ src ] = options!.doTransform([ originSrc ], dataset, options.imageFilter);
+        const [ src ] = dt([ originSrc ], dataset, options.imageFilter);
         setSrc(el, src, bindType);
     } else {
         el.classList.add(options!.enterClass || '');
-        const [ thumbnailSrc ] = options!.doTransform([ originSrc ], {
+        const [ thumbnailSrc ] = dt([ originSrc ], {
             ...dataset,
             width: thumbnailWidth,
         }, options.imageFilter);
@@ -60,7 +61,7 @@ function fn(el: HTMLElement, binding: VNodeDirective) {
 
         // 缩略图已经加载完成
         loadImage(thumbnailSrc).then(() => {
-            const [ src ] = options!.doTransform([ originSrc ], dataset, options!.imageFilter);
+            const [ src ] = dt([ originSrc ], dataset, options!.imageFilter);
 
             loadImage(src).then(() => {
                 setSrc(el, src, bindType);
@@ -173,8 +174,7 @@ function generateImageFilter(generateOptions: GenerateImageFilterOptions) {
          * 添加七牛处理
          */
         qiniu(listener, options) {
-            const isQiniu = /qnssl.com/;
-            if (isQiniu.test(listener.src)) {
+            if (generateOptions.isQiniu && generateOptions.isQiniu(listener, options)) {
                 const data = listener.ro!;
                 const keys = Object.keys(data);
                 if (keys.length === 0) {
@@ -239,8 +239,7 @@ function generateImageFilter(generateOptions: GenerateImageFilterOptions) {
          * 处理微信头像图片
          */
         wx(listener, options) {
-            const isWX = /wx.qlogo.cn/;
-            if (isWX.test(listener.src)) {
+            if (generateOptions.isWeChat && generateOptions.isWeChat(listener, options)) {
                 const data = listener.ro!;
                 const keys = Object.keys(data);
                 if (keys.length === 0) {
