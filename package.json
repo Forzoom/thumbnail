@@ -1,6 +1,6 @@
 {
   "name": "@forzoom/thumbnail",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/thumbnail.cjs.js",
   "module": "dist/thumbnail.esm.js",
@@ -26,7 +26,7 @@
   },
   "types": "types/index.d.ts",
   "peerDependencies": {
-    "core-js": "2.x"
+    "core-js": "^3.6.4"
   },
   "dependencies": {}
 }

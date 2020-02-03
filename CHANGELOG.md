@@ -20,3 +20,7 @@
 ### 0.0.6
 
 1. fix: generateImageFilter返回类型错误
+
+### 0.1.0
+
+1. 使用core-js@3

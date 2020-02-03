@@ -1,17 +1,21 @@
 'use strict';
 
-require('core-js/modules/es6.array.last-index-of');
-require('core-js/modules/es6.regexp.search');
-require('core-js/modules/es6.array.index-of');
-require('core-js/modules/es6.array.for-each');
-require('core-js/modules/es7.symbol.async-iterator');
-require('core-js/modules/es6.symbol');
-require('core-js/modules/web.dom.iterable');
-require('core-js/modules/es6.array.iterator');
-require('core-js/modules/es6.object.to-string');
-require('core-js/modules/es6.object.keys');
-require('core-js/modules/es6.number.constructor');
-require('core-js/modules/es6.promise');
+require('core-js/modules/es.symbol');
+require('core-js/modules/es.symbol.description');
+require('core-js/modules/es.symbol.iterator');
+require('core-js/modules/es.array.for-each');
+require('core-js/modules/es.array.index-of');
+require('core-js/modules/es.array.iterator');
+require('core-js/modules/es.array.last-index-of');
+require('core-js/modules/es.number.constructor');
+require('core-js/modules/es.object.keys');
+require('core-js/modules/es.object.to-string');
+require('core-js/modules/es.regexp.exec');
+require('core-js/modules/es.string.iterator');
+require('core-js/modules/es.string.search');
+require('core-js/modules/web.dom-collections.for-each');
+require('core-js/modules/web.dom-collections.iterator');
+require('core-js/modules/es.promise');
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {

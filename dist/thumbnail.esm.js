@@ -1,15 +1,19 @@
-import 'core-js/modules/es6.array.last-index-of';
-import 'core-js/modules/es6.regexp.search';
-import 'core-js/modules/es6.array.index-of';
-import 'core-js/modules/es6.array.for-each';
-import 'core-js/modules/es7.symbol.async-iterator';
-import 'core-js/modules/es6.symbol';
-import 'core-js/modules/web.dom.iterable';
-import 'core-js/modules/es6.array.iterator';
-import 'core-js/modules/es6.object.to-string';
-import 'core-js/modules/es6.object.keys';
-import 'core-js/modules/es6.number.constructor';
-import 'core-js/modules/es6.promise';
+import 'core-js/modules/es.symbol';
+import 'core-js/modules/es.symbol.description';
+import 'core-js/modules/es.symbol.iterator';
+import 'core-js/modules/es.array.for-each';
+import 'core-js/modules/es.array.index-of';
+import 'core-js/modules/es.array.iterator';
+import 'core-js/modules/es.array.last-index-of';
+import 'core-js/modules/es.number.constructor';
+import 'core-js/modules/es.object.keys';
+import 'core-js/modules/es.object.to-string';
+import 'core-js/modules/es.regexp.exec';
+import 'core-js/modules/es.string.iterator';
+import 'core-js/modules/es.string.search';
+import 'core-js/modules/web.dom-collections.for-each';
+import 'core-js/modules/web.dom-collections.iterator';
+import 'core-js/modules/es.promise';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
