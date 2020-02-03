@@ -16,3 +16,7 @@
 
 1. 添加isQiniu函数和isWeChat函数
 2. 默认使用自带的doTransform函数
+
+### 0.0.6
+
+1. fix: generateImageFilter返回类型错误

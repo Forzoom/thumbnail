@@ -45,4 +45,4 @@ interface GenerateImageFilterOptions {
 
 export declare const install: (Vue: typeof _Vue, options: ThumbnailPluginOptions) => void;
 export declare const doTransform: (images: string[], dataset: any, imageFilter: ImageFilter) => string[];
-export declare const generateImageFilter: (generateOptions: GenerateImageFilterOptions) => void;
+export declare const generateImageFilter: (generateOptions: GenerateImageFilterOptions) => ImageFilter;
