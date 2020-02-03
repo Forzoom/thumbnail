@@ -96,7 +96,7 @@ Vue.use({
 
 ## requirement
 
-1. 依赖于core-js@2
+1. @0.0.6依赖于core-js@2，@0.1.0依赖于core-js@3
 
 ## Roadmap
 
