@@ -1,6 +1,6 @@
 {
   "name": "@forzoom/thumbnail",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/thumbnail.cjs.js",
   "module": "dist/thumbnail.esm.js",

@@ -38,6 +38,8 @@ interface GenerateImageFilterOptions {
     bed?: {
         [key: string]: string,
     };
+    /** 默认显示图片 */
+    defaultImageUrl?: string;
     isAliyun?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;
     isQiniu?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;
     isWeChat?: (listener: ImageFilterListener, options: ImageFilterOptions) => boolean;

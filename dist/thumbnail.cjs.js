@@ -1653,8 +1653,8 @@ function generateImageFilter(generateOptions) {
         } // 使用默认头像
 
 
-        if (data.avatar) {
-          listener.src = 'https://www.runorout.cn/photo.png';
+        if (data.avatar && generateOptions.defaultImageUrl) {
+          listener.src = generateOptions.defaultImageUrl;
         }
       }
     }
