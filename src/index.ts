@@ -30,8 +30,12 @@ function install(Vue: typeof _Vue, _options: ThumbnailPluginOptions) {
 
 function setSrc(el: HTMLElement, src: string, bindType?: string) {
     if (bindType) {
-        // @ts-ignore
-        el.style[bindType] = `url(${src})`;
+        if (bindType === 'poster') {
+            el.setAttribute('poster', src);
+        } else {
+            // @ts-ignore
+            el.style[bindType] = `url(${src})`;
+        }
     } else {
         el.setAttribute('src', src);
     }
