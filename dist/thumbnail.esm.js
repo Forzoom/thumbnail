@@ -1328,8 +1328,12 @@ function install(Vue, _options) {
 
 function setSrc(el, src, bindType) {
   if (bindType) {
-    // @ts-ignore
-    el.style[bindType] = "url(".concat(src, ")");
+    if (bindType === 'poster') {
+      el.setAttribute('poster', src);
+    } else {
+      // @ts-ignore
+      el.style[bindType] = "url(".concat(src, ")");
+    }
   } else {
     el.setAttribute('src', src);
   }
