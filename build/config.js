@@ -17,7 +17,7 @@ module.exports = exports = [
             resolve({
                 extensions,
             }),
-            builtins(),
+            // builtins(),
             commonjs(),
             babel({
                 exclude: 'node_modules/**',
@@ -35,7 +35,7 @@ module.exports = exports = [
             resolve({
                 extensions,
             }),
-            builtins(),
+            // builtins(),
             commonjs(),
             babel({
                 exclude: 'node_modules/**',
@@ -54,7 +54,7 @@ module.exports = exports = [
             resolve({
                 extensions,
             }),
-            builtins(),
+            // builtins(),
             commonjs(),
             babel({
                 exclude: 'node_modules/**',
@@ -73,7 +73,7 @@ module.exports = exports = [
             resolve({
                 extensions,
             }),
-            builtins(),
+            // builtins(),
             commonjs(),
             babel({
                 exclude: 'node_modules/**',

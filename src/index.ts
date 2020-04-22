@@ -23,8 +23,8 @@ function install(Vue: typeof _Vue, _options: ThumbnailPluginOptions) {
     options = _options
 
     Vue.directive('thumbnail', {
-        bind: fn,
-        update: fn,
+        bind: genFn(false),
+        update: genFn(true),
     });
 }
 
@@ -41,46 +41,50 @@ function setSrc(el: HTMLElement, src: string, bindType?: string) {
     }
 }
 
-function fn(el: HTMLElement, binding: VNodeDirective) {
-    if (!options || binding.value === binding.oldValue) {
-        return;
-    }
-    const dataset = el.dataset;
-    /** 原始链接 */
-    const originSrc = binding.value;
-    const bindType = binding.arg;
-    const thumbnailWidth = dataset.thumbnailWidth;
-    const dt = options!.doTransform || doTransform;
-
-    if (!thumbnailWidth || isNaN(Number(thumbnailWidth))) {
-        const [ src ] = dt([ originSrc ], dataset, options.imageFilter);
-        setSrc(el, src, bindType);
-    } else {
-        el.classList.add(options!.enterClass || '');
-        const [ thumbnailSrc ] = dt([ originSrc ], {
-            ...dataset,
-            width: thumbnailWidth,
-        }, options.imageFilter);
-        setSrc(el, thumbnailSrc, bindType);
-
-        // 缩略图已经加载完成
-        loadImage(thumbnailSrc).then(() => {
-            const [ src ] = dt([ originSrc ], dataset, options!.imageFilter);
-
-            loadImage(src).then(() => {
-                setSrc(el, src, bindType);
-                el.classList.add(options!.leaveClass || '');
-
-                function removeClass() {
-                    // tip: 少部分设备不支持multiple parameters，所以这里分开remove，基本保证最大兼容性
-                    el.classList.remove(options!.enterClass || '');
-                    el.classList.remove(options!.leaveClass || '');
-                }
-
-                // 为了保证只在这个el上添加一次transitionend
-                el.ontransitionend = removeClass;
+function genFn(cache: boolean) {
+    return function fn(el: HTMLElement, binding: VNodeDirective) {
+        // 当cache时需要检查 value 和 oldValue
+        if (!options || (cache && binding.value === binding.oldValue)) {
+            return;
+        }
+        const dataset = el.dataset;
+        /** 原始链接 */
+        const originSrc = binding.value;
+        const bindType = binding.arg;
+        const thumbnailWidth = dataset.thumbnailWidth;
+        const dt = options!.doTransform || doTransform;
+    
+        if (!thumbnailWidth || isNaN(Number(thumbnailWidth))) {
+            const result = dt([ originSrc ], dataset, options.imageFilter);
+            setSrc(el, result[0], bindType);
+        } else {
+            el.classList.add(options!.enterClass || '');
+            const result = dt([ originSrc ], {
+                ...dataset,
+                width: thumbnailWidth,
+            }, options.imageFilter);
+            const thumbnailSrc = result[0];
+            setSrc(el, thumbnailSrc, bindType);
+    
+            // 缩略图已经加载完成
+            loadImage(thumbnailSrc).then(() => {
+                const [ src ] = dt([ originSrc ], dataset, options!.imageFilter);
+    
+                loadImage(src).then(() => {
+                    setSrc(el, src, bindType);
+                    el.classList.add(options!.leaveClass || '');
+    
+                    function removeClass() {
+                        // tip: 少部分设备不支持multiple parameters，所以这里分开remove，基本保证最大兼容性
+                        el.classList.remove(options!.enterClass || '');
+                        el.classList.remove(options!.leaveClass || '');
+                    }
+    
+                    // 为了保证只在这个el上添加一次transitionend
+                    el.ontransitionend = removeClass;
+                });
             });
-        });
+        }
     }
 }
 

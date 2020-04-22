@@ -32,3 +32,9 @@
 ### 0.1.2
 
 1. 允许使用v-thumbnail:poster来设置poster
+
+### 0.2.0
+
+1. 将url作为外部依赖
+2. 允许binding.value作为undefined触发一次流程
+
